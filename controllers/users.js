@@ -10,15 +10,15 @@ const headCount = async () =>
 // Aggregate function for getting the overall grade using $avg
 const grade = async (userId) =>
   User.aggregate([
-    // only include the given student by using $match
+    // only include the given user by using $match
     { $match: { _id: ObjectId(userId) } },
     {
-      $unwind: '$assignments',
+      $unwind: '$reactions',
     },
     {
       $group: {
         _id: ObjectId(userId),
-        overallGrade: { $avg: '$assignments.score' },
+        overallGrade: { $avg: '$reactions.score' },
       },
     },
   ]);
@@ -39,7 +39,7 @@ module.exports = {
         return res.status(500).json(err);
       });
   },
-  // Get a single student
+  // Get a single user
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .select('-__v')
@@ -88,12 +88,12 @@ module.exports = {
   },
 
   // Add an assignment to a user
-  addAssignment(req, res) {
-    console.log('You are adding an assignment');
+  addReaction(req, res) {
+    console.log('You are adding a reaction');
     console.log(req.body);
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { assignments: req.body } },
+      { $addToSet: { reactions: req.body } },
       { runValidators: true, new: true }
     )
       .then((user) =>
@@ -106,10 +106,10 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // Remove assignment from a student
-  removeAssignment(req, res) {
+  removeReaction(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
+      { $pull: { reaction: { reactionId: req.params.reactionId } } },
       { runValidators: true, new: true }
     )
       .then((user) =>
