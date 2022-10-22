@@ -80,7 +80,7 @@ module.exports = {
   },
 
   // todo: Add an friend to a user
-  addReaction(req, res) {
+  addFriend(req, res) {
     console.log('You are adding a reaction');
     console.log(req.body);
     User.findOneAndUpdate(
@@ -98,7 +98,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   // todo: delete friend from user
-  removeReaction(req, res) {
+  removeFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
       { $pull: { reaction: { reactionId: req.params.reactionId } } },

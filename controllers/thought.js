@@ -73,6 +73,6 @@ updateThought(req, res) {
 },
 };
 
-// todo: add a reaction
+// todo: create a reaction
 
-// todo: remove a reaction
+// todo: delete a reaction
