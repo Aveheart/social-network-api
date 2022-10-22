@@ -11,9 +11,15 @@ const reactionSchema = new Schema({
         required: true,
         maxLength: 280
     },
-    userName: {
+    username: {
+        type: String,
+        required: true,
+    },
+    createdAt: {
         type: Date,
         default: Date.now,
+        // moment format to get date
+        get: (date) => moment(date).format('MMM DD, YYYY [at] hh:mm a')
     },
 },
 {

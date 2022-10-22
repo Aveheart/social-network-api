@@ -14,8 +14,8 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
-      //todo: add moment format for date
-      // get: (date) => moment(date).format('MMM DD, YYYY [at] hh:mm a')
+      // moment format to get date
+      get: (date) => moment(date).format('MMM DD, YYYY [at] hh:mm a')
 
     },
     username:
@@ -27,6 +27,7 @@ const thoughtSchema = new Schema(
   },
   {
     toJSON: {
+      // virtuals are properties that are not stored in MongoDB
       virtuals: true,
       getters: true
     },
