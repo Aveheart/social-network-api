@@ -16,10 +16,9 @@ const userSchema = new Schema(
       required: true,
       unique: true,
       //  validate email found from stackoverflow
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        "Please fill a valid email address",
-      ],
+      match: 
+      [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        "Please fill a valid email address",],
     },
     thoughts: [
       {
