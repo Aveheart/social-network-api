@@ -2,7 +2,7 @@ const { Thought, User } = require('../models');
 
 module.exports = {
 
-  
+
   // Get all thoughts
   getThoughts(req, res) {
     Thought.find()
@@ -72,3 +72,7 @@ updateThought(req, res) {
     .catch((err) => res.status(500).json(err));
 },
 };
+
+// todo: add a reaction
+
+// todo: remove a reaction
