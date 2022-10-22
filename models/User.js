@@ -4,14 +4,23 @@ const reactionSchema = require('./Reaction');
 // Schema to create User model
 const userSchema = new Schema(
   {
-  username: {
-    type: String,
-    required: true,
-  },
-   email: {
-    type: String,
-    required: true,
-   },
+    username: {
+      type: String,
+      required: true,
+      trim: true,
+      unique: true
+    },
+
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      //  validate email found from stackoverflow
+      match: [
+        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+        "Please fill a valid email address",
+      ],
+    },
     thoughts: [
       {
         type: Schema.Types.ObjectId,
@@ -32,6 +41,11 @@ const userSchema = new Schema(
     },
   }
 );
+// this virtual should get the amount of friends count
+userSchema.virtual('friendCount')
+  .get(function () {
+    return this.friends.length;
+  });
 
 const User = model('user', userSchema);
 
