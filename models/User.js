@@ -40,7 +40,7 @@ const userSchema = new Schema(
     },
   }
 );
-// this virtual should get the amount of friends count
+// this virtual should get the amount of friends count. example pulled form mini project
 userSchema.virtual('friendCount')
   .get(function () {
     return this.friends.length;
