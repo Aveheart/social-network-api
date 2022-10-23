@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 const moment = require('moment');
 
-// Schema to create a thought model
+
 const thoughtSchema = new Schema(
   {
     thoughtText: {
