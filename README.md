@@ -11,6 +11,8 @@ This social media app allows users to create a friends list, share their thought
 Demo:
 https://user-images.githubusercontent.com/110785267/197438365-3981f3ec-b651-45a2-a58c-080a1951cf1c.mp4
 
+https://github.com/Aveheart/social-network-api.git
+
 ## collaborators
 Anyone who helped me even just answering simple questions gets a shout out. Cindy, Camille, and Arely thanks for the study group!
 
