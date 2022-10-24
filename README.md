@@ -1,5 +1,8 @@
 # social-network-api
 
+## Installation
+npm i in terminal and then then node index
+
 ## Description
 This social media app allows users to create a friends list, share their thoughts, and send reactions to their friends thoughts. Add and remove friends, thoughts along with the choice of adding and deleting reactions created.  This Api was built with MongoDB, Express.js, Mongoose ODM, and Moment for timestamps. 
 
