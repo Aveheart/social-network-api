@@ -79,36 +79,33 @@ module.exports = {
       });
   },
 
-  // todo: Add an friend to a user
+// add friend
   addFriend(req, res) {
-    console.log('You are adding a reaction');
-    console.log(req.body);
+    
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $addToSet: { reactions: req.body } },
+      { $addToSet: { friends: req.body } },
       { runValidators: true, new: true }
     )
       .then((user) =>
         !user
-          ? res
-            .status(404)
-            .json({ message: 'No user found with that ID :(' })
+          ? res.status(404).json({ message: 'No user found with that ID' })
           : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
   },
-  // todo: delete friend from user
+
+  // delete friend
+
   removeFriend(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
-      { $pull: { reaction: { reactionId: req.params.reactionId } } },
+      { $pull: { friends: req.params.reactionId } },
       { runValidators: true, new: true }
     )
       .then((user) =>
         !user
-          ? res
-            .status(404)
-            .json({ message: 'No user found with that ID :(' })
+          ? res.status(404).json({ message: 'No user found with that ID' })
           : res.json(user)
       )
       .catch((err) => res.status(500).json(err));
